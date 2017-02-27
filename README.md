@@ -56,13 +56,11 @@ brew install xctool
 ```
 或通过xctool.sh命令下载和安装。
 
-## Usage
+## 用法
 
-xctool's commands and options are mostly a superset of xcodebuild's.  In
-most cases, you can just swap __xcodebuild__ with __xctool__ and things will
-run as expected but with more attractive output.
+xctool的命令和选项基本上是xcodebuild的超集。在大多数情况下，你只需要用 __xctool__ 替换 __xcodebuild__ ，事情就会像如同期望中一般地执行，并给出更有魅力的输出。
 
-You can always get help and a full list of options with:
+你可以得到帮助和全部选项的列表，通过：
 
 ```bash
 path/to/xctool.sh -help
