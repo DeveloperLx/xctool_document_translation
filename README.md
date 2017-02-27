@@ -18,8 +18,6 @@ __xctool__ 是一个`xcodebuild test` 的插入式替换方案（drop-in replace
 
 _xctool_ 可以选择性地并行执行全部你的测试bundles，显著地提升你测试执行的速度。在Facebook，我们通过并行地执行提升了两到三倍的速度。
 
-Use the `-parallelize` option with _run-tests_ or _test_ to enable.
-
 在 _run-tests_ 或 _test_ 使用`-parallelize`选项来打开。
 
 [查看更多的信息](#parallelizing-test-runs)
@@ -42,27 +40,21 @@ _xcodebuild_ 难以置信得啰嗦，为每个源文件打印全部的编译命�
 
 _xctool_ 使用Objective-C编写。Mac OS X 和 iOS 可以轻松地在没有学习一门新语言的情况下，提交新的特性和修复Ta们遇到的问题。我们非常欢迎pull requests！
 
+**注意：** 用xctool build项目已被废弃，并且不会去更新来支持将来版本的Xcode。我们建议将简单的需求移到 `xcodebuild` (用[xcpretty](https://github.com/supermarin/xcpretty)) , 牵扯较多的需求移动到 [xcbuild](https://github.com/facebook/xcbuild).
+xctool 将继续支持测试（看上面的）.
 
-**Note:** Support for building projects with xctool is deprecated and will
-not be updated to support future versions of Xcode. We suggest moving to
-`xcodebuild` (with [xcpretty](https://github.com/supermarin/xcpretty)) for
-simple needs, or [xcbuild](https://github.com/facebook/xcbuild) for more
-involved requirements. xctool will continue to support testing (see above).
+## 需求
 
-## Requirements
+* Xcode 7 或更高的版本
+* 你需要安装Xcode命令行工具。在Xcode中通过 _Xcode &rarr; Preferences &rarr; Downloads_ 来安装。
 
-* Xcode 7 or higher
-* You'll need Xcode's Command Line Tools installed.  From Xcode, install
-via _Xcode &rarr; Preferences &rarr; Downloads_.
+## 安装
 
-## Installation
-
-xctool can be installed from homebrew via 
+xctool 可以用homebrew安装通过
 ```bash
 brew install xctool
 ```
-
-or can be downloaded and run via the xctool.sh command. 
+或通过xctool.sh命令下载和安装。
 
 ## Usage
 
