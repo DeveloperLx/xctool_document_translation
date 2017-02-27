@@ -66,11 +66,13 @@ xctool的命令和选项基本上是xcodebuild的超集。在大多数情况下�
 path/to/xctool.sh -help
 ```
 
-### Testing
+### 测试
 
 _xctool_ has a __run-tests__ action which knows how to run the
 tests in your scheme.  You can optionally limit what tests are run
 or change the SDK they're run against.
+
+_xctool_ 有一个了解怎样在你的scheme中执行测试的 __run-tests__ 的动作。你可以选择性地限制？？？？
 
 To run all tests in your scheme, you would use:
 
