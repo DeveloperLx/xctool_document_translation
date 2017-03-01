@@ -234,7 +234,6 @@ build
 为了在一个可持续集成环境下执行你的测试，你必须为你的应用target创建**Shared Schemes**，并确保全部的依赖项（例如CocoaPods）被明确地添加到了Scheme。这么做：
 
 1. 通过选择菜单**Product** > **Schemes** > **Manage Schemes...**，打开**Manage Schemes**表
-1. Locate your application target in the list. Ensure that the **Shared** checkbox in far right hand column of the sheet is checked.
 1. 在列表中找到你的应用target。确保在右侧头部列的表单上的**Shared**的勾选框已选中。
 1. 如果你的应用或测试target包含交叉项目的依赖（例如CocoaPods），你就需要确保他们被配置为明确的依赖。像这么做：
 1. 点亮你的应用target，然后点击**Edit...**按钮来打开Scheme编辑表单。
