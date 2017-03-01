@@ -233,14 +233,14 @@ build
 对于在一个可持续集成服务（如[Travis CI](https://travis-ci.org/)或[Jenkins](http://jenkins-ci.org/)）下执行你的测试，xctool是一个杰出的选项。
 为了在一个可持续集成环境下执行你的测试，你必须为你的应用target创建**Shared Schemes**，并确保全部的依赖项（例如CocoaPods）被明确地添加到了Scheme。这么做：
 
-1. Open up the **Manage Schemes** sheet by selecting the **Product** menu > **Schemes** > **Manage Schemes...**
+1. 通过选择菜单**Product** > **Schemes** > **Manage Schemes...**，打开**Manage Schemes**表
 1. Locate your application target in the list. Ensure that the **Shared** checkbox in far right hand column of the sheet is checked.
-1. If your application or test targets include cross-project dependencies such as CocoaPods, then you will need to ensure that they have been
-configured as explicit dependencies. To do so:
-1. Highlight your application target and hit the **Edit...** button to open the Scheme editing sheet.
-1. Click the **Build** tab in the left-hand panel of the Scheme editor.
-1. Click the **+** button and add each dependency to the project. CocoaPods will appear as a static library named **Pods**.
-1. Drag the dependency above your application target so that it is built first.
+1. 在列表中找到你的应用target。确保在右侧头部列的表单上的**Shared**的勾选框已选中。
+1. 如果你的应用或测试target包含交叉项目的依赖（例如CocoaPods），你就需要确保他们被配置为明确的依赖。像这么做：
+1. 点亮你的应用target，然后点击**Edit...**按钮来打开Scheme编辑表单。
+1. 点击Scheme编辑器在左侧头部面板的**Build**标签。
+1. 点击**+**按钮，添加每个依赖到项目中。CocoaPods将以一个名为**Pods**的静态库的形式出现。
+1. 拖拽依赖到你的项目target之上，这样它就会第一个被built。
 
 你将有一个新的文件在你的Xcode项目下，**xcshareddata/xcschemes**目录中。这是你刚刚配置的共享Scheme。检查这个文件是否在你的repository中，这样xctool就能找到和执行你的执行在下一次可持续集成的build时。
 
