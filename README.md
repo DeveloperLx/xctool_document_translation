@@ -202,16 +202,11 @@ run-tests -parallelize -logicTestBucketSize 20
 
 ### Building (仅限 Xcode 7)
 
-**Note:** Support for building projects with xctool is deprecated and isn't
-supported in Xcode 8 and later. We suggest moving to `xcodebuild` (with 
-[xcpretty](https://github.com/supermarin/xcpretty)) for
-simple needs, or [xcbuild](https://github.com/facebook/xcbuild) for more
-involved requirements. Alternatively you can use [Buck](https://buckbuild.com/).
+**注意：** 使用xctool来build项目的支持已被废弃，在Xcode 8及其之后的版本中已不再使用。我们建议迁移到`xcodebuild`(和[xcpretty](https://github.com/supermarin/xcpretty))满足简单的需求，或[xcbuild](https://github.com/facebook/xcbuild)满足更多相关的需求。相对应地，你可以使用[Buck](https://buckbuild.com/)。
 
-Building products with _xctool_ is the same as building them with
-_xcodebuild_.
+使用_xctool_来build项目与使用_xcodebuild_是等价的。
 
-If you use workspaces and schemes:
+如果你使用workspaces和schemes：
 
 ```bash
 path/to/xctool.sh \
@@ -220,7 +215,7 @@ path/to/xctool.sh \
 build
 ```
 
-If you use projects and schemes:
+如果你使用projects和schemes：
 
 ```bash
 path/to/xctool.sh \
@@ -229,18 +224,14 @@ path/to/xctool.sh \
 build
 ```
 
-All of the common options like `-configuration`, `-sdk`, `-arch` work
-just as they do with _xcodebuild_.
+全部的通常的选项`-configuration`, `-sdk`, `-arch`作用就像它们在_xcodebuild_中一样。
 
-NOTE: _xctool_ doesn't support directly building targets using
-`-target`; you must use schemes.
+注意：_xctool_不支持直接使用`-target`build target；你必须使用schemes。
 
-## Continuous Integration
+## 可持续集成
 
-xctool is an excellent choice for running your tests under a continuous
-integration server such as [Travis CI](https://travis-ci.org/) or [Jenkins](http://jenkins-ci.org/).
-In order to your run your tests within a continuous integration environment,
-you must create **Shared Schemes** for your application target and ensure that all dependencies (such as CocoaPods) are added explicitly to the Scheme. To do so:
+对于在一个可持续集成服务（如[Travis CI](https://travis-ci.org/)或[Jenkins](http://jenkins-ci.org/)）下执行你的测试，xctool是一个杰出的选项。
+为了在一个可持续集成环境下执行你的测试，你必须为你的应用target创建**Shared Schemes**，并确保全部的依赖项（例如CocoaPods）被明确地添加到了Scheme。这么做：
 
 1. Open up the **Manage Schemes** sheet by selecting the **Product** menu > **Schemes** > **Manage Schemes...**
 1. Locate your application target in the list. Ensure that the **Shared** checkbox in far right hand column of the sheet is checked.
@@ -251,9 +242,7 @@ configured as explicit dependencies. To do so:
 1. Click the **+** button and add each dependency to the project. CocoaPods will appear as a static library named **Pods**.
 1. Drag the dependency above your application target so that it is built first.
 
-You will now have a new file in the **xcshareddata/xcschemes** directory underneath your Xcode project. This is the
-shared Scheme that you just configured. Check this file into your repository and xctool will be able to find and execute
-your tests on the next CI build.
+你将有一个新的文件在你的Xcode项目下，**xcshareddata/xcschemes**目录中。这是你刚刚配置的共享Scheme。检查这个文件是否在你的repository中，这样xctool就能找到和执行你的执行在下一次可持续集成的build时。
 
 ### Example Travis CI Configuration
 
