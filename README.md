@@ -68,13 +68,10 @@ path/to/xctool.sh -help
 
 ### 测试
 
-_xctool_ has a __run-tests__ action which knows how to run the
-tests in your scheme.  You can optionally limit what tests are run
-or change the SDK they're run against.
-
-_xctool_ 有一个了解怎样在你的scheme中执行测试的 __run-tests__ 的动作。你可以选择性地限制？？？？
+_xctool_ 有一个 __run-tests__ 动作，可以理解怎么在你的scheme下执行测试。你可以有选择地限制运行测试，或改变使用的SDK。
 
 To run all tests in your scheme, you would use:
+在你的scheme下执行全部的测试，你可以用：
 
 ```bash
 path/to/xctool.sh \
@@ -83,7 +80,7 @@ path/to/xctool.sh \
 run-tests
 ```
 
-To run just the tests in a specific target, use the `-only` option:
+仅仅在一个指定的target来执行测试，使用`-only`选项：
 
 ```bash
 path/to/xctool.sh \
@@ -92,7 +89,7 @@ path/to/xctool.sh \
 run-tests -only SomeTestTarget
 ```
 
-You can go further and just run a specific test class:
+你可以更进一步地只执行一个指定的测试类：
 
 ```bash
 path/to/xctool.sh \
@@ -101,7 +98,7 @@ path/to/xctool.sh \
 run-tests -only SomeTestTarget:SomeTestClass
 ```
 
-Or, even further and run just a single test method:
+甚至再进一步，你可以只执行一个单独的测试类：
 
 ```bash
 path/to/xctool.sh \
@@ -110,7 +107,7 @@ path/to/xctool.sh \
 run-tests -only SomeTestTarget:SomeTestClass/testSomeMethod
 ```
 
-You can also specify prefix matching for classes or test methods:
+你也可以为类或测试方法指定前缀：
 
 ```bash
 path/to/xctool.sh \
@@ -119,7 +116,7 @@ path/to/xctool.sh \
 run-tests -only SomeTestTarget:SomeTestClassPrefix*,SomeTestClass/testSomeMethodPrefix*
 ```
 
-Alternatively, you can omit a specific item by prefix matching for classes or test methods:
+相对应的，你可以通过前缀匹配类或方法忽略特定的项目：
 
 ```bash
 path/to/xctool.sh \
@@ -128,7 +125,7 @@ path/to/xctool.sh \
 run-tests -omit SomeTestTarget:SomeTestClass/testSomeMethodPrefix*
 ```
 
-You can also run tests against a different SDK:
+您还可以针对不同的SDK运行测试：
 
 ```bash
 path/to/xctool.sh \
@@ -137,18 +134,15 @@ path/to/xctool.sh \
 run-tests -test-sdk iphonesimulator5.1
 ```
 
-Optionally you can specify `-testTimeout` when running tests. When an individual
-test hits this timeout, it is considered a failure rather than waiting indefinitely. 
-This can prevent your test run from deadlocking forever due to misbehaving tests.
+当运行测试时，你可有有选择地指定`-testTimeout`选项。当遇到一个测试超时时，就会得到失败的结果而不是无穷地等待。这可以让你的测试执行 避免由于不当的行为造成死锁。
 
-By default application tests will wait at most 30 seconds for the simulator
-to launch. If you need to change this timeout, use the `-launch-timeout` option.
+默认的，应用测试将等待最多30秒让模拟器启动。如果你想改变这个超时，使用`-launch-timeout`选项。
 
-#### Building Tests
+#### Building 测试
 
-Before running tests you need to build them. You can use __xcodebuild__,  __xcbuild__ or __Buck__ to do that. 
+在执行测试前你需要build它们。你可以使用__xcodebuild__,  __xcbuild__ 或 __Buck__来做。
 
-For example:
+例如:
 
 ```bash
 xcodebuild \
@@ -161,10 +155,9 @@ build-for-testing
 
 ##### Xcode 7
 
-If you are using Xcode 7 for building you can continue using xctool to build tests using
-__build-tests__ or just use __test__ actions to run tests.
+如果你正在使用Xcode 7来build，你可继续使用xctool来build测试，通过 __build-tests__ 或只是使用 __test__ 来执行测试。
 
-For example:
+例如:
 
 ```bash
 path/to/xctool.sh \
@@ -174,6 +167,7 @@ build-tests
 ```
 
 You can optionally just build a single test target with the `-only` option:
+你可以选择性地用`-only`选项只build一个单独的测试target。
 
 ```bash
 path/to/xctool.sh \
@@ -182,15 +176,11 @@ path/to/xctool.sh \
 build-tests -only SomeTestTarget
 ```
 
+#### 并行测试执行
 
-#### Parallelizing Test Runs
+_xctool_ 可以并行地执行单元测试，更好地利用闲置的CPU内核。在Facebook，我们通过并行地执行测试，看到了两三倍的增速。
 
-_xctool_ can optionally run unit tests in parallel, making better use of
-otherwise idle CPU cores.  At Facebook, we've seen 2x and 3x gains by
-parallelizing our test runs.
-
-To allow test bundles to run concurrently, use the `-parallelize`
-option:
+要并行地运行测试bundles，使用`-parallelize`选项：
 
 ```bash
 path/to/xctool.sh \
@@ -199,13 +189,9 @@ path/to/xctool.sh \
 run-tests -parallelize
 ```
 
-The above gives you parallelism, but you're bounded by your slowest test
-bundle.  For example, if you had two test bundles ('A' and 'B'), but 'B'
-took 10 times as long to run because it contained 10 times as many
-tests, then the above parallelism won't help much.
+以上给了你并行的能力，但是你会受到最慢的测试bundle的约束。例如，如果你有两个测试bundle（'A' 和 'B'）, 但是'B'花费了10倍的时间，由于它包含10倍的测试，这样上面的并行机制就不会有太大帮助。
 
-You can get further gains by breaking your test execution into buckets
-using the `-logicTestBucketSize` option:
+你可以通过使用`-logicTestBucketSize`选项，把你的测试执行分成若干小的部分，获得更进一步的速度提升：
 
 ```bash
 path/to/xctool.sh \
@@ -214,12 +200,9 @@ path/to/xctool.sh \
 run-tests -parallelize -logicTestBucketSize 20
 ```
 
-The above will break your test execution into buckets of _20_ test
-cases each, and those bundles will be run concurrently.  If some of your
-test bundles are much larger than others, this will help even things out
-and speed up the overall test run.
+上面的将把你的测试执行拆分成一个个的小部分（每个大小为20），它们将被并行地执行。如果一些你的测试bundle比其它的更大，这将提升全部的测试执行，帮助事情的解决。
 
-### Building (Xcode 7 only)
+### Building (仅限 Xcode 7)
 
 **Note:** Support for building projects with xctool is deprecated and isn't
 supported in Xcode 8 and later. We suggest moving to `xcodebuild` (with 
@@ -512,16 +495,10 @@ For more information, see [this post by Jason Jarrett](http://staxmanade.com/201
 
 ## License
 
-Copyright 2014-present Facebook
+版权 2014-present Facebook
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may
-not use this work except in compliance with the License. You may obtain
-a copy of the License in the LICENSE file, or at:
+Apache License 2.0版本授权；你必须在这个许可证下使用这个产品。你可以获得一个LICENSE文件的许可证副本，或从这里：
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+本软件是在"AS IS" BASIS许可证下发布的，不接受任何明示或暗示的担保条件，除非有可使用的法律或书面约定。您可以查看许可证中的权限和特定语言下的权限。
