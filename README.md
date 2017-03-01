@@ -70,7 +70,6 @@ path/to/xctool.sh -help
 
 _xctool_ 有一个 __run-tests__ 动作，可以理解怎么在你的scheme下执行测试。你可以有选择地限制运行测试，或改变使用的SDK。
 
-To run all tests in your scheme, you would use:
 在你的scheme下执行全部的测试，你可以用：
 
 ```bash
@@ -166,7 +165,6 @@ path/to/xctool.sh \
 build-tests
 ```
 
-You can optionally just build a single test target with the `-only` option:
 你可以选择性地用`-only`选项只build一个单独的测试target。
 
 ```bash
