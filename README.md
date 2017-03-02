@@ -426,7 +426,7 @@ Test target MyProjectTests encountered an error (Timed out waiting 120 seconds f
 
 ## 许可证
 
-版权 2014-present Facebook
+版权 2014年颁发 Facebook
 
 Apache License 2.0版本授权；你必须在这个许可证下使用这个产品。你可以获得一个LICENSE文件的许可证副本，或从这里：
 
