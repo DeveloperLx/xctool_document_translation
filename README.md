@@ -379,14 +379,8 @@ sys.stdout.write('\n')
 
 ## 贡献
 
-Bug fixes, improvements, and especially new
-[Reporter](#reporters)
-implementations are welcome.  Before submitting a [pull
-request](https://help.github.com/articles/using-pull-requests), please
-be sure to sign the [Facebook
-Contributor License
-Agreement](https://developers.facebook.com/opensource/cla).  We can't
-accept pull requests unless it's been signed.
+欢迎修复bug，改进，以及实现新的报告者。在提交[pull
+request](https://help.github.com/articles/using-pull-requests)前，请确认签署了[Facebook贡献者执照协议](https://developers.facebook.com/opensource/cla)。我们只接受签署过的pull request。
 
 #### 工作流 
 
@@ -397,11 +391,7 @@ accept pull requests unless it's been signed.
 4. Open GitHub, under "Your recently pushed branches", click __Pull
 Request__ for _my-feature_.
 
-Be sure to use a separate feature branch and pull request for every
-self-contained feature.  If you need to make changes from feedback, make
-the changes in place rather than layering on commits (use interactive
-rebase to edit your earlier commits).  Then use __git push --force
-origin my-feature__ to update your pull request.
+确认使用单独的分支，为每个单的的特性提交pull request。如果你需要从反馈中做出改变，做出适当的改变而不是依靠大量的提交（使用交互式的rebase来编辑你较早的commit）。然后使用__git push --force origin my-feature__来更新你的pull request。
 
 #### 工作流 (为Facebook员工, 其它提交者)
 
