@@ -1,5 +1,7 @@
 # xctool
 
+[原文](https://github.com/facebook/xctool/blob/master/README.md) 翻译：[DeveloperLx](http://weibo.com/DeveloperLx)
+
 __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的产品更加轻松。它尤其对可持续集成非常有用。
 
 [![Build Status](https://travis-ci.org/facebook/xctool.png?branch=master)](https://travis-ci.org/facebook/xctool)
