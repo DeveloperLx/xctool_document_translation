@@ -63,7 +63,7 @@ path/to/xctool.sh -help
 
 ### 测试
 
-_xctool_ 有一个 __run-tests__ 动作，可以理解怎么在你的scheme下执行测试。你可以有选择地限制运行测试，或改变使用的SDK。
+_xctool_有一个__run-tests__的动作，可以理解怎么在你的scheme下执行测试。你可以选择性地限制运行哪些测试，或改变使用的SDK。
 
 在你的scheme下执行全部的测试，你可以用：
 
@@ -110,7 +110,7 @@ path/to/xctool.sh \
 run-tests -only SomeTestTarget:SomeTestClassPrefix*,SomeTestClass/testSomeMethodPrefix*
 ```
 
-相对应的，你可以通过前缀匹配类或方法忽略特定的项目：
+相对应的，你可以通过前缀匹配类或测试方法，来忽略特定的项目：
 
 ```bash
 path/to/xctool.sh \
@@ -128,13 +128,13 @@ path/to/xctool.sh \
 run-tests -test-sdk iphonesimulator5.1
 ```
 
-当运行测试时，你可有有选择地指定`-testTimeout`选项。当遇到一个测试超时时，就会得到失败的结果而不是无穷地等待。这可以让你的测试执行 避免由于不当的行为造成死锁。
+当运行测试时，你可以有选择地指定`-testTimeout`选项。当遇到一个测试超时时，就不会无穷地等待，而是得到失败的结果。这可以让你测试的执行避免由于不正当的行为造成死锁。
 
 默认的，应用测试将等待最多30秒让模拟器启动。如果你想改变这个超时，使用`-launch-timeout`选项。
 
 #### Building 测试
 
-在执行测试前你需要build它们。你可以使用__xcodebuild__,  __xcbuild__ 或 __Buck__来做。
+在执行测试前，你需要build它们。你可以使用__xcodebuild__,  __xcbuild__或__Buck__去做。
 
 例如:
 
@@ -145,13 +145,11 @@ xcodebuild \
 build-for-testing
 ```
 
-
-
 ##### Xcode 7
 
-如果你正在使用Xcode 7来build，你可继续使用xctool来build测试，通过 __build-tests__ 或只是使用 __test__ 来执行测试。
+如果你正在使用Xcode 7来build，你可继续使用xctool来build测试，通过__build-tests__或只是使用__test__来执行测试。
 
-例如:
+例如：
 
 ```bash
 path/to/xctool.sh \
@@ -171,7 +169,7 @@ build-tests -only SomeTestTarget
 
 #### 并行测试执行
 
-_xctool_ 可以并行地执行单元测试，更好地利用闲置的CPU内核。在Facebook，我们通过并行地执行测试，看到了两三倍的增速。
+_xctool_可以并行地执行单元测试，更好地利用闲置的CPU内核。在Facebook，我们通过并行地执行测试，看到了两三倍的增速。
 
 要并行地运行测试bundles，使用`-parallelize`选项：
 
@@ -184,7 +182,7 @@ run-tests -parallelize
 
 以上给了你并行的能力，但是你会受到最慢的测试bundle的约束。例如，如果你有两个测试bundle（'A' 和 'B'）, 但是'B'花费了10倍的时间，由于它包含10倍的测试，这样上面的并行机制就不会有太大帮助。
 
-你可以通过使用`-logicTestBucketSize`选项，把你的测试执行分成若干小的部分，获得更进一步的速度提升：
+你可以通过使用`-logicTestBucketSize`选项，把你的测试执行分成若干小的部分，获得更进一步速度的提升：
 
 ```bash
 path/to/xctool.sh \
@@ -197,7 +195,7 @@ run-tests -parallelize -logicTestBucketSize 20
 
 ### Building (仅限 Xcode 7)
 
-**注意：** 使用xctool来build项目的支持已被废弃，在Xcode 8及其之后的版本中已不再使用。我们建议迁移到`xcodebuild`(和[xcpretty](https://github.com/supermarin/xcpretty))满足简单的需求，或[xcbuild](https://github.com/facebook/xcbuild)满足更多相关的需求。相对应地，你可以使用[Buck](https://buckbuild.com/)。
+**注意：** 使用xctool来build项目的支持已被废弃，在Xcode 8及其之后的版本中已不再使用。我们建议迁移到`xcodebuild`(和[xcpretty](https://github.com/supermarin/xcpretty))来满足简单的需求，或[xcbuild](https://github.com/facebook/xcbuild)满足更多相关的需求。相对应地，你可以使用[Buck](https://buckbuild.com/)。
 
 使用_xctool_来build项目与使用_xcodebuild_是等价的。
 
@@ -225,8 +223,8 @@ build
 
 ## 可持续集成
 
-对于在一个可持续集成服务（如[Travis CI](https://travis-ci.org/)或[Jenkins](http://jenkins-ci.org/)）下执行你的测试，xctool是一个杰出的选项。
-为了在一个可持续集成环境下执行你的测试，你必须为你的应用target创建**Shared Schemes**，并确保全部的依赖项（例如CocoaPods）被明确地添加到了Scheme。这么做：
+对于在一个可持续集成服务（如[Travis CI](https://travis-ci.org/)或[Jenkins](http://jenkins-ci.org/)）下执行你的测试，xctool是一个优秀的的选项。
+为了在一个可持续集成环境下执行你的测试，你必须为你的应用target创建**Shared Schemes**，并确保全部的依赖项（例如CocoaPods）明确地被添加到了Scheme。这么做：
 
 1. 通过选择菜单**Product** > **Schemes** > **Manage Schemes...**，打开**Manage Schemes**表
 1. 在列表中找到你的应用target。确保在右侧头部列的表单上的**Shared**的勾选框已选中。
@@ -236,11 +234,11 @@ build
 1. 点击**+**按钮，添加每个依赖到项目中。CocoaPods将以一个名为**Pods**的静态库的形式出现。
 1. 拖拽依赖到你的项目target之上，这样它就会第一个被built。
 
-你将有一个新的文件在你的Xcode项目下，**xcshareddata/xcschemes**目录中。这是你刚刚配置的共享Scheme。检查这个文件是否在你的repository中，这样xctool就能找到和执行你的执行在下一次可持续集成的build时。
+你将得到一个新的文件在你的Xcode项目下的**xcshareddata/xcschemes**目录中，它是你刚刚配置的共享Scheme。在你的repository中检查这个文件，然后xctool就可以在你下次的CI build时找到和执行你的测试。
 
 ### 例如 Travis CI 配置
 
-[Travis CI](https://travis-ci.org/) 是一个非常流行可持续集成系统，是一个免费提供的开源项目。它很好地与Github进行过整合，现在，它使用_xctool_作为OC项目默认的build和测试工具。一旦你为使用xctool设立了共享的Scheme，你需要配置一个`.travis.yml`文件。
+[Travis CI](https://travis-ci.org/) 是一个非常流行的可持续集成系统，也是一个免费提供的开源项目。它很好地与Github进行了整合，现在，它使用_xctool_作为OC项目默认的build和测试工具。如果你为使用xctool设立了共享的Scheme，你需要配置一个`.travis.yml`文件。
 
 如果你使用workspaces，你的`.travis.yml`可能是：
 
@@ -268,13 +266,11 @@ before_install:
 script: xctool -workspace MyApp.xcworkspace -scheme MyApp test
 ```
 
-你可以通过参考[About OS X Travis CI
-Environment](http://about.travis-ci.org/docs/user/osx-ci-environment/)文档，为iOS和OS X应用了解更多Travis CI的环境，并通过咨询[Getting
-Started](http://about.travis-ci.org/docs/user/getting-started/)为配置你的项目找到深入的文档。
+你可以通过参考[About OS X Travis CI Environment](http://about.travis-ci.org/docs/user/osx-ci-environment/)文档，为iOS和OS X应用了解更多Travis CI的环境，并通过咨询[Getting Started](http://about.travis-ci.org/docs/user/getting-started/)为配置你的项目找到深入的文档。
 
 ## 报告者
 
-xctool有一个可以用不同格式输出build和测试结果的报告者。如果你自己没有指定任何报告者，xctool将默认使用`pretty`和`user-notifications`报告者。xctool也有这些特定的规则：
+xctool拥有可以通过不同格式输出build和测试结果的报告者。如果你自己没有指定任何报告者，xctool将默认使用`pretty`和`user-notifications`报告者。xctool也有这些特定的规则：
 
 * 当xctool没有检测到TTY（显示终端名）时，重写是不可以在`pretty`报告者上使用的。这个可以通过在环境中设置`XCTOOL_FORCE_TTY`来覆盖。
 
