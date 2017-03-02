@@ -8,7 +8,7 @@ __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的�
 &bull; [可持续继承](#可持续继承)
 &bull; [报告者](#报告者) &bull;
 [配置xctool参数](#配置xctool参数) &bull; 
-[贡献](#贡献) &bull; [需了解的问题和提示](#需了解的问题和提示) &bull; [执照](#执照) ]
+[贡献](#贡献) &bull; [需了解的问题和提示](#需了解的问题和提示) &bull; [许可证](#许可证) ]
 
 ## 特性
 
@@ -434,25 +434,21 @@ It's a nice way to keep things together.
 under "Your recently pushed branches", click __Pull Request__ for
 _myusername/my-feature_.
 
-## Known Issues & Tips
+## 需了解的问题和提示
 
-* __Use shared schemes and disable the Autocreate Schemes feature.__
+* __使用共享的scheme，并关掉自动创建Scheme特性。__
 
-Xcode has two kinds of schemes: shared, and user.  User schemes are
-the default, and they're stored under a folder called `USERNAME.xcuserdatad`,
-which most people correctly add to their _.gitignore_.
+Xcode有两种scheme：共享的和某用户的。默认是某用户的scheme，它们保存在一个名为`USERNAME.xcuserdatad`的目录下，大多数人正确地将其添加到了_.gitignore_中。
 
-Use shared schemes instead, and commit them to your repo.  This way
-everyone on your team (and your build server) are working from the
-same information, and are building in the same way.
+使用共享的scheme替代，并将其提交到你的repo上。这样你团队中的每个人（和你的build服务器）就可以使用相同的信息工作，并以相同的方式build。
 
 ![example](https://fpotter_public.s3.amazonaws.com/xctool-shared-schemes.png)
 
-* __Make sure simulators run in a GUI context__.
+* __确保模拟器运行在图形界面工具下__。
 
-If you are running `xctool` in continuous integration, the user account
-calling `xctool` **must** have an active GUI context.
-If not, the simulator will fail to start with cryptic warnings like:
+如果你运行`xctool`在可持续集成，你的用户账号调用`xctool`**必须**有一个活动的图形界面工具的上下文。
+
+如果不是这样，模拟器不能成功地启动，并给出神秘的警告像这样：
 
 ```
 Tried to install the test host app 'com.myapp.test' but failed.
@@ -468,9 +464,9 @@ Test target MyProjectTests encountered an error (Timed out waiting 120 seconds f
 Note that the
 same holds true with `xcodebuild`...this is not `xctool` specific.
 
-For more information, see [this post by Jason Jarrett](http://staxmanade.com/2015/01/setting-jenkins-up-to-run-xctool-and-xcode-simulator-tests/).
+关于更多的信息，查看[this post by Jason Jarrett](http://staxmanade.com/2015/01/setting-jenkins-up-to-run-xctool-and-xcode-simulator-tests/)。
 
-## License
+## 许可证
 
 版权 2014-present Facebook
 
