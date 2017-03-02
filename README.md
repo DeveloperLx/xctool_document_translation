@@ -247,7 +247,7 @@ build
 
 [Travis CI](https://travis-ci.org/) 是一个非常流行可持续集成系统，是一个免费提供的开源项目。它很好地与Github进行过整合，现在，它使用_xctool_作为OC项目默认的build和测试工具。一旦你为使用xctool设立了共享的Scheme，你需要配置一个`.travis.yml`文件。
 
-如果你使用workspaces，你的`.travis.yml`可能像这样：
+如果你使用workspaces，你的`.travis.yml`可能是：
 
 ```yaml
 language: objective-c
@@ -255,7 +255,7 @@ xcode_workspace: path/to/YourApp.xcworkspace
 xcode_scheme: YourApp
 ```
 
-If you're using projects, your `.travis.yml` might be:
+如果你使用projects，你的`.travis.yml`可能是：
 
 ```yaml
 language: objective-c
@@ -263,8 +263,7 @@ xcode_project: path/to/YourApp.xcodeproj
 xcode_scheme: YourApp
 ```
 
-For more flexibility, you can also control how Travis installs and
-invokes xctool:
+更灵活的你也可以控制Travis怎么安装和调用xctools：
 
 ```yaml
 language: objective-c
@@ -274,12 +273,9 @@ before_install:
 script: xctool -workspace MyApp.xcworkspace -scheme MyApp test
 ```
 
-You can learn more about the Travis CI environment for iOS and OS X
-application by referring to the [About OS X Travis CI
-Environment](http://about.travis-ci.org/docs/user/osx-ci-environment/)
-document and find in-depth documentation for configuring your project by
-consulting the [Getting
-Started](http://about.travis-ci.org/docs/user/getting-started/) page.
+你可以通过参考[About OS X Travis CI
+Environment](http://about.travis-ci.org/docs/user/osx-ci-environment/)文档，为iOS和OS X应用了解更多Travis CI的环境，并通过咨询[Getting
+Started](http://about.travis-ci.org/docs/user/getting-started/)为配置你的项目找到深入的文档。
 
 ## Reporters
 
