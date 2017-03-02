@@ -243,16 +243,11 @@ build
 
 你将有一个新的文件在你的Xcode项目下，**xcshareddata/xcschemes**目录中。这是你刚刚配置的共享Scheme。检查这个文件是否在你的repository中，这样xctool就能找到和执行你的执行在下一次可持续集成的build时。
 
-### Example Travis CI Configuration
+### 例如 Travis CI 配置
 
-[Travis CI](https://travis-ci.org/) is a very popular continuous
-integration system offered for free to Open Source projects.  It
-integrates well with Github, and it now uses _xctool_ as the default
-build and test tool for Objective-C projects.  Once you have set up your
-shared Scheme for use with xctool, you will need to configure a
-`.travis.yml` file.
+[Travis CI](https://travis-ci.org/) 是一个非常流行可持续集成系统，是一个免费提供的开源项目。它很好地与Github进行过整合，现在，它使用_xctool_作为OC项目默认的build和测试工具。一旦你为使用xctool设立了共享的Scheme，你需要配置一个`.travis.yml`文件。
 
-If you're using workspaces, your `.travis.yml` might be:
+如果你使用workspaces，你的`.travis.yml`可能像这样：
 
 ```yaml
 language: objective-c
