@@ -384,12 +384,11 @@ request](https://help.github.com/articles/using-pull-requests)前，请确认签
 
 #### 工作流 
 
-1. Fork.
-2. Make a feature branch: __git checkout -b my-feature__
-3. Make your feature.  Keep things tidy so you have one commit per self-contained change (squashing can help).
-3. Push your branch to your fork: __git push -u origin my-feature__
-4. Open GitHub, under "Your recently pushed branches", click __Pull
-Request__ for _my-feature_.
+1. Fork。
+2. 创建一个特性分支：__git checkout -b my-feature__
+3. 使你的特性保持整洁，每个单独的改变有一个commit（细化是比较有帮助的）。
+4. Push你的分支到你的fork：__git push -u origin my-feature__
+5. 打开GitHub，在"Your recently pushed branches"下，点击_my-feature_的__Pull Request__。
 
 确认使用单独的分支，为每个单的的特性提交pull request。如果你需要从反馈中做出改变，做出适当的改变而不是依靠大量的提交（使用交互式的rebase来编辑你较早的commit）。然后使用__git push --force origin my-feature__来更新你的pull request。
 
