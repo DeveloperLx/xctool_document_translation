@@ -461,8 +461,7 @@ Testing failed:
 Test target MyProjectTests encountered an error (Timed out waiting 120 seconds for simulator to boot, current state is 1.  
 ```
 
-Note that the
-same holds true with `xcodebuild`...this is not `xctool` specific.
+注意这对于`xcodebuild`也是相同的...这不是`xctool`所特有的。
 
 关于更多的信息，查看[this post by Jason Jarrett](http://staxmanade.com/2015/01/setting-jenkins-up-to-run-xctool-and-xcode-simulator-tests/)。
 
