@@ -6,7 +6,7 @@ __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的�
 
 [![Build Status](https://travis-ci.org/facebook/xctool.png?branch=master)](https://travis-ci.org/facebook/xctool)
 
-[ [特性](#特性) &bull; [需求](#需求) &bull; [用法](#用法) &bull; [可持续继承](#可持续继承) &bull; [报告者](#报告者) &bull; [配置](#配置) &bull; [贡献](#贡献) &bull; [了解问题和提示](#了解问题和提示) &bull; [许可证](#许可证) ]
+[ [特性](#特性) &bull; [需求](#需求) &bull; [用法](#用法) &bull; [可持续继承](#可持续继承) &bull; [报告者](#报告者) &bull; [配置](#配置（.xctool-args）) &bull; [贡献](#贡献) &bull; [了解问题和提示](#了解问题和提示) &bull; [许可证](#许可证) ]
 
 ## 特性
 
@@ -36,7 +36,7 @@ _xcodebuild_ 难以置信得啰嗦，它为每个源文件打印全部的编译�
 
 _xctool_ 使用Objective-C编写。Mac OS X 和 iOS 可以在没有学习一门新语言的情况下，轻松地提交新的特性，修复Ta们遇到的问题。我们非常欢迎pull requests！
 
-**注意：** 用xctool build项目已被废弃，并且不会去更新以支持将来版本的Xcode。我们建议将简单的需求移到 `xcodebuild` (用[xcpretty](https://github.com/supermarin/xcpretty)) , 牵扯较多的需求移动到 [xcbuild](https://github.com/facebook/xcbuild).xctool将继续支持测试（看上面的）。
+**注意：** 用xctool build项目已被废弃，并且不会去更新以支持将来版本的Xcode。我们建议将简单的需求移到`xcodebuild`(用[xcpretty](https://github.com/supermarin/xcpretty)) , 牵扯较多的需求移动到 [xcbuild](https://github.com/facebook/xcbuild).xctool将继续支持测试（看上面的）。
 
 ## 需求
 
@@ -53,7 +53,7 @@ brew install xctool
 
 ## 用法
 
-xctool的命令和选项基本上就是xcodebuild的超集。在大多数情况下，你只需要用 __xctool__ 替换 __xcodebuild__ ，一切就会像如同期望中一般地执行，并给出更有吸引力的输出。
+xctool的命令和选项基本上就是xcodebuild的超集。在大多数情况下，你只需要用__xctool__替换__xcodebuild__，一切就会像如同期望中一般地执行，并给出更有吸引力的输出。
 
 你可以得到帮助和全部选项的列表，通过：
 
