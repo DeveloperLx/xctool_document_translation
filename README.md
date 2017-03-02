@@ -6,7 +6,7 @@ __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的�
 
 [![Build Status](https://travis-ci.org/facebook/xctool.png?branch=master)](https://travis-ci.org/facebook/xctool)
 
-[ [特性](#特性) &bull; [需求](#需求) &bull; [用法](#用法) &bull; [可持续继承](#可持续继承) &bull; [报告者](#报告者) &bull; [配置](#配置（.xctool-args）) &bull; [贡献](#贡献) &bull; [了解问题和提示](#了解问题和提示) &bull; [许可证](#许可证) ]
+[ [特性](#特性) &bull; [需求](#需求) &bull; [用法](#用法) &bull; [可持续集成](#可持续集成) &bull; [报告者](#报告者) &bull; [配置](#配置（.xctool-args）) &bull; [贡献](#贡献) &bull; [了解问题和提示](#了解问题和提示) &bull; [许可证](#许可证) ]
 
 ## 特性
 
