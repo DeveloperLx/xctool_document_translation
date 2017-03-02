@@ -361,12 +361,9 @@ sys.stdout.write('\n')
 
 ## 配置 (.xctool-args)
 
-If you routinely need to pass many arguments to _xctool_ on the
-command-line, you can use an __.xctool-args__ file to speed up your workflow.
-If _xctool_ finds an __.xctool-args__ file in the current directory, it
-will automatically pre-populate its arguments from there.
+在命令行中，如果你常规地需要传递很多参数给_xctool_，你可以使用一个__.xctool-args__文件加速你的工作流。如果_xctool_在当前目录下发现了__.xctool-args__文件，它就会自动地从这里得到参数。
 
-The format is just a JSON array of arguments:
+它的格式就是一个参数的JSON数组：
 
 ```json
 [
@@ -378,8 +375,7 @@ The format is just a JSON array of arguments:
 ]
 ```
 
-Any extra arguments you pass on the command-line will take precedence 
-over those in the _.xctool-args_ file.
+你传递到命令行的任何额外的参数将会覆盖掉那些在_.xctool-args_文件中的。
 
 ## 贡献
 
