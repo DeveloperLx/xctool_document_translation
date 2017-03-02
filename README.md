@@ -1,6 +1,6 @@
 # xctool
 
-[原文](https://github.com/facebook/xctool/blob/master/README.md) 翻译：[DeveloperLx](http://weibo.com/DeveloperLx)
+#### [原文](https://github.com/facebook/xctool/blob/master/README.md) 翻译：[DeveloperLx](http://weibo.com/DeveloperLx)
 
 __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的产品更加轻松。它尤其对可持续集成非常有用。
 
@@ -312,28 +312,20 @@ build
 
 ### 已包含的报告者
 
-* __pretty__: a text-based reporter that uses ANSI colors and unicode
-symbols for pretty output (the default).
-* __plain__: like _pretty_, but with no colors or unicode.
-* __phabricator__: outputs a JSON array of build/test results which can
-be fed into the [Phabricator](http://phabricator.org/) code-review tool.
-* __junit__: produces a JUnit/xUnit compatible XML file with test
-results.
-* __json-stream__: a stream of build/test events as JSON dictionaries,
-one per line [(example
-output)](https://gist.github.com/fpotter/82ffcc3d9a49d10ee41b).
-* __json-compilation-database__: outputs a [JSON Compilation Database](http://clang.llvm.org/docs/JSONCompilationDatabase.html) of build events which can be used by [Clang Tooling](http://clang.llvm.org/docs/LibTooling.html) based tools, e.g. [OCLint](http://oclint.org).
-* __user-notifications__: sends notification to Notification Center when action is completed [(example notifications)](https://cloud.githubusercontent.com/assets/1044236/2771974/a2715306-ca74-11e3-9889-fa50607cc412.png).
-* __teamcity__: sends service messages to [TeamCity](http://www.jetbrains.com/teamcity/) Continuous Integration Server
+* __pretty__：默认项，一个基于文本的报告者，使用ANSI配色和统一编码的符号得到较好的输出。
+* __plain__：类似于_pretty_，但没有颜色和统一编码。
+* __phabricator__：输出一个build或测试的JSON数组，它可以注入到[Phabricator](http://phabricator.org/)这个code-review工具中。
+* __junit__：用测试的结果生成一个JUnit/xUnit兼容的XML文件。
+* __json-stream__：一个build或测试事件的JSON字典的流，每行一个[(示例输出)](https://gist.github.com/fpotter/82ffcc3d9a49d10ee41b)。
+* __json-compilation-database__：输出一个build事件的[“JSON编辑数据库”（JSON Compilation Database）](http://clang.llvm.org/docs/JSONCompilationDatabase.html)，它可以被基于[Clang Tooling](http://clang.llvm.org/docs/LibTooling.html)的工具使用，例如：[OCLint](http://oclint.org)。
+* __user-notifications__：当动作完成时，发送通知到通知中心[(示例通知)](https://cloud.githubusercontent.com/assets/1044236/2771974/a2715306-ca74-11e3-9889-fa50607cc412.png)。
+* __teamcity__：发送服务信息到[TeamCity](http://www.jetbrains.com/teamcity/)可持续集成服务
 
-### 实施你自己的报告者
+### 实现你自己的报告者
 
-You can also implement your own reporters using whatever language you
-like.  Reporters in xctool are separate executables that read JSON
-objects from STDIN and write formatted results to STDOUT.
+你也可以任何你喜欢的语言实现你自己的报告者。在xctool中，报告者从STDIN读取JSON对象，以及写入格式化的结果到STDOUT是分别执行的。
 
-You can invoke reporters by passing their full path via the `-reporter`
-option:
+你可以通过传递它们的全路径给`-reporter`选项来调用报告者：
 
 ```bash
 path/to/xctool.sh \
@@ -343,8 +335,7 @@ path/to/xctool.sh \
 test
 ```
 
-For example, here's a simple reporter in Python that outputs a _period_
-for every passing test and an _exclamation mark_ for every failing test:
+例如，这里有一个简单的用python写的报告者，它为每个通过测试输出_._，每个失败的测试输出_!_：
 
 ```python
 #!/usr/bin/python
@@ -365,8 +356,7 @@ sys.stdout.write('!')
 sys.stdout.write('\n')
 ```
 
-If you're writing a reporter in Objective-C, you'll find the
-`Reporter` class helpful - see [Reporter.h](https://github.com/facebook/xctool/blob/master/Common/Reporter.h).
+如果你要用OC写一个报告者，你可以找到`Reporter`类的帮助 - 查看[Reporter.h](https://github.com/facebook/xctool/blob/master/Common/Reporter.h)。
 
 
 ## 配置 (.xctool-args)
