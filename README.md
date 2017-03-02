@@ -10,25 +10,23 @@ __xctool__ 是苹果 __xcodebuild__ 的扩展，它可以让测试iOS和Mac的�
 
 ## 特性
 
-__xctool__ 是一个`xcodebuild test` 的插入式替换方案（drop-in replacement），可以为之添加一些额外的特性：
+__xctool__ 是一个`xcodebuild测试` 的插入式替换方案（drop-in replacement），为之添加了一些额外的特性：
 
-* **快速，并行地测试运行。**
+* **更快，并行地测试运行。**
 
-_xctool_ 可以选择性地并行执行全部你的测试bundles，显著地提升你测试执行的速度。在Facebook，我们通过并行地执行提升了两到三倍的速度。
+_xctool_ 可以选择性地并行执行你的全部测试bundles，显著地提升你测试执行的速度。在Facebook，我们通过并行执行，提升了两到三倍的速度。
 
-在 _run-tests_ 或 _test_ 使用`-parallelize`选项来打开。
+在 _run-tests_ 或 _test_ 使用`-parallelize`选项打开。[查看更多的信息](#parallelizing-test-runs)
 
-[查看更多的信息](#parallelizing-test-runs)
+* **结构化地输出测试结果。**
 
-* **结构化地输出测试。**
+_xctool_ 以结构化JSON对象的形式捕获全部的测试结果。如果你正在构建一个可持续集成的系统，这意味着你不再必须去正则解析 _xcodebuild_ 的输出。
 
-_xctool_ 用结构化JSON对象的形式捕获全部的测试结果。如果你正在构建一个可持续集成的系统，这意味着你不再必须去正则解析 _xcodebuild_ 的输出。
-
-尝试报告者之一来定制输出，或使用`-reporter json-stream`选项来获取全部的事件流。
+尝试用一种[报告者](#报告者)来定制输出，或使用`-reporter json-stream`选项来获取全部的事件流。
 
 * **对人类友好的，ANSI配色的输出。**
 
-_xcodebuild_ 难以置信得啰嗦，为每个源文件打印全部的编译命令和输出。默认的 _xctool_ 只有在出了什么错误的时候才会冗长地输出，这样可以让问题更容易被识别。
+_xcodebuild_ 难以置信得啰嗦，它为每个源文件打印全部的编译命令和输出。而默认的，_xctool_ 只有在出了什么错误的时候才会冗长地输出，这会让问题更加容易被识别在哪里。
 
 例如：
 
@@ -36,10 +34,9 @@ _xcodebuild_ 难以置信得啰嗦，为每个源文件打印全部的编译命�
 
 * **用 Objective-C 编写。**
 
-_xctool_ 使用Objective-C编写。Mac OS X 和 iOS 可以轻松地在没有学习一门新语言的情况下，提交新的特性和修复Ta们遇到的问题。我们非常欢迎pull requests！
+_xctool_ 使用Objective-C编写。Mac OS X 和 iOS 可以在没有学习一门新语言的情况下，轻松地提交新的特性，修复Ta们遇到的问题。我们非常欢迎pull requests！
 
-**注意：** 用xctool build项目已被废弃，并且不会去更新来支持将来版本的Xcode。我们建议将简单的需求移到 `xcodebuild` (用[xcpretty](https://github.com/supermarin/xcpretty)) , 牵扯较多的需求移动到 [xcbuild](https://github.com/facebook/xcbuild).
-xctool 将继续支持测试（看上面的）.
+**注意：** 用xctool build项目已被废弃，并且不会去更新以支持将来版本的Xcode。我们建议将简单的需求移到 `xcodebuild` (用[xcpretty](https://github.com/supermarin/xcpretty)) , 牵扯较多的需求移动到 [xcbuild](https://github.com/facebook/xcbuild).xctool将继续支持测试（看上面的）。
 
 ## 需求
 
@@ -56,7 +53,7 @@ brew install xctool
 
 ## 用法
 
-xctool的命令和选项基本上是xcodebuild的超集。在大多数情况下，你只需要用 __xctool__ 替换 __xcodebuild__ ，事情就会像如同期望中一般地执行，并给出更有魅力的输出。
+xctool的命令和选项基本上就是xcodebuild的超集。在大多数情况下，你只需要用 __xctool__ 替换 __xcodebuild__ ，一切就会像如同期望中一般地执行，并给出更有吸引力的输出。
 
 你可以得到帮助和全部选项的列表，通过：
 
