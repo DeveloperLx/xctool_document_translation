@@ -312,7 +312,7 @@ build
 
 ### 实现你自己的报告者
 
-你也可以任何你喜欢的语言实现你自己的报告者。在xctool中，报告者从STDIN读取JSON对象，以及写入格式化的结果到STDOUT是分别执行的。
+你也可以用任何你喜欢的语言实现你自己的报告者。在xctool中，报告者从STDIN读取JSON对象，以及写入格式化的结果到STDOUT是分别执行的。
 
 你可以通过传递它们的全路径给`-reporter`选项来调用报告者：
 
@@ -347,7 +347,6 @@ sys.stdout.write('\n')
 
 如果你要用OC写一个报告者，你可以找到`Reporter`类的帮助 - 查看[Reporter.h](https://github.com/facebook/xctool/blob/master/Common/Reporter.h)。
 
-
 ## 配置 (.xctool-args)
 
 在命令行中，如果你常规地需要传递很多参数给_xctool_，你可以使用一个__.xctool-args__文件加速你的工作流。如果_xctool_在当前目录下发现了__.xctool-args__文件，它就会自动地从这里得到参数。
@@ -364,7 +363,7 @@ sys.stdout.write('\n')
 ]
 ```
 
-你传递到命令行的任何额外的参数将会覆盖掉那些在_.xctool-args_文件中的。
+你传递到命令行的任何额外的参数将会覆盖掉相应在_.xctool-args_文件中的。
 
 ## 贡献
 
