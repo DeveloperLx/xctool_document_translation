@@ -279,22 +279,16 @@ script: xctool -workspace MyApp.xcworkspace -scheme MyApp test
 Environment](http://about.travis-ci.org/docs/user/osx-ci-environment/)文档，为iOS和OS X应用了解更多Travis CI的环境，并通过咨询[Getting
 Started](http://about.travis-ci.org/docs/user/getting-started/)为配置你的项目找到深入的文档。
 
-## Reporters
+## 报告者
 
-xctool has reporters that output build and test results in different
-formats.  If you do not specify any reporters yourself, xctool uses
-the `pretty` and `user-notifications` reporters by default. xctool also
-has these special rules:
+xctool有一个可以用不同格式输出build和测试结果的报告者。如果你自己没有指定任何报告者，xctool将默认使用`pretty`和`user-notifications`报告者。xctool也有这些特定的规则：
 
-* Overwrite is disabled on the `pretty` reporter when xctool does not
-detect a TTY. This can be overridden by setting `XCTOOL_FORCE_TTY` in
-the environment.
-* The `user-notifications` reporter will not be used
-if xctool detects that the build is being run by Travis CI, CircleCI, TeamCity,
-or Jenkins (i.e. `TRAVIS=true`, `CIRCLECI=true`, `TEAMCITY_VERSION`, or
-`JENKINS_URL` in the environment).
+* 当xctool没有检测到TTY（显示终端名）时，重写是不可以在`pretty`报告者上使用的。这个可以通过在环境中设置`XCTOOL_FORCE_TTY`来覆盖。
 
-You can choose your own reporters with the `-reporter` option:
+* `user-notifications`将不会被使用
+
+如果xctool检测到build正在被Travis CI, CircleCI, TeamCity, 或Jenkins执行（也就是说，`TRAVIS=true`, `CIRCLECI=true`, `TEAMCITY_VERSION`, 或在环境中`JENKINS_URL`）。
+你可以通过`-reporter`选项使用你自己的报告者：
 
 ```bash
 path/to/xctool.sh \
@@ -304,8 +298,7 @@ path/to/xctool.sh \
 build
 ```
 
-By default, reporters output to standard out, but you can also direct
-the output to a file by adding `:OUTPUT_PATH` after the reporter name:
+默认的，报告者输出到标注输出中，但你也可以通过在报告者名称后添加`:OUTPUT_PATH`，来指导它输入到一个文件中：
 
 ```bash
 path/to/xctool.sh \
@@ -315,10 +308,9 @@ path/to/xctool.sh \
 build
 ```
 
-You can use as many reporters as you like; just use the `-reporter`
-option multiple times.
+你可以依照自己的喜好使用多个报告者；只需使用`-reporter`选项多次。
 
-### Included Reporters
+### 已包含的报告者
 
 * __pretty__: a text-based reporter that uses ANSI colors and unicode
 symbols for pretty output (the default).
@@ -334,7 +326,7 @@ output)](https://gist.github.com/fpotter/82ffcc3d9a49d10ee41b).
 * __user-notifications__: sends notification to Notification Center when action is completed [(example notifications)](https://cloud.githubusercontent.com/assets/1044236/2771974/a2715306-ca74-11e3-9889-fa50607cc412.png).
 * __teamcity__: sends service messages to [TeamCity](http://www.jetbrains.com/teamcity/) Continuous Integration Server
 
-### Implementing Your Own Reporters
+### 实施你自己的报告者
 
 You can also implement your own reporters using whatever language you
 like.  Reporters in xctool are separate executables that read JSON
@@ -377,7 +369,7 @@ If you're writing a reporter in Objective-C, you'll find the
 `Reporter` class helpful - see [Reporter.h](https://github.com/facebook/xctool/blob/master/Common/Reporter.h).
 
 
-## Configuration (.xctool-args)
+## 配置 (.xctool-args)
 
 If you routinely need to pass many arguments to _xctool_ on the
 command-line, you can use an __.xctool-args__ file to speed up your workflow.
@@ -399,7 +391,7 @@ The format is just a JSON array of arguments:
 Any extra arguments you pass on the command-line will take precedence 
 over those in the _.xctool-args_ file.
 
-## Contributing
+## 贡献
 
 Bug fixes, improvements, and especially new
 [Reporter](#reporters)
@@ -410,7 +402,7 @@ Contributor License
 Agreement](https://developers.facebook.com/opensource/cla).  We can't
 accept pull requests unless it's been signed.
 
-#### Workflow 
+#### 工作流 
 
 1. Fork.
 2. Make a feature branch: __git checkout -b my-feature__
@@ -425,7 +417,7 @@ the changes in place rather than layering on commits (use interactive
 rebase to edit your earlier commits).  Then use __git push --force
 origin my-feature__ to update your pull request.
 
-#### Workflow (for Facebook people, other committers)
+#### 工作流 (为Facebook员工, 其它提交者)
 
 Mostly the same, but use branches in the main xctool repo if you prefer.
 It's a nice way to keep things together.
