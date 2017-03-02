@@ -388,7 +388,7 @@ request](https://help.github.com/articles/using-pull-requests)前，请确认签
 2. Push你的分支：__git push -u origin myusername/my-feature__ 
 3. 打开GitHub[facebook/xctool](https://github.com/facebook/xctool)，在"Your recently pushed branches"下，点击_myusername/my-feature_的__Pull Request__。
 
-## 需了解的问题和提示
+## 了解问题和提示
 
 * __使用共享的scheme，并关掉自动创建Scheme特性。__
 
