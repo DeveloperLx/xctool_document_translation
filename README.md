@@ -405,14 +405,11 @@ origin my-feature__ to update your pull request.
 
 #### 工作流 (为Facebook员工, 其它提交者)
 
-Mostly the same, but use branches in the main xctool repo if you prefer.
-It's a nice way to keep things together.
+大多情况下都是一样的，但如果你偏好使用在主xctool repo的分支，也可以。保持事情一致是一个好的方向。
 
-1. Make a feature branch: __git checkout -b myusername/my-feature__
-2. Push your branch: __git push -u origin myusername/my-feature__
-3. Open GitHub to [facebook/xctool](https://github.com/facebook/xctool),
-under "Your recently pushed branches", click __Pull Request__ for
-_myusername/my-feature_.
+1. 创建一个特性分支：__git checkout -b myusername/my-feature__
+2. Push你的分支：__git push -u origin myusername/my-feature__ 
+3. 打开GitHub[facebook/xctool](https://github.com/facebook/xctool)，在"Your recently pushed branches"下，点击_myusername/my-feature_的__Pull Request__。
 
 ## 需了解的问题和提示
 
